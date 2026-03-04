@@ -46,7 +46,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Trove dependency, ContextBuilder and ActionBuilder with cleanup and back-reference chaining
+- [x] 02-01-PLAN.md — Trove dependency, ContextBuilder and ActionBuilder with cleanup and back-reference chaining
 - [ ] 02-02-PLAN.md — BindingBuilder for keyboard/mouse, IAS callback wiring, EZInput.context() entry point
 - [ ] 02-03-PLAN.md — Context enable/disable, priority, and sink management verification
 
@@ -76,5 +76,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
-| 2. Core Builder | 0/3 | Not started | - |
+| 2. Core Builder | 1/3 | In Progress|  |
 | 3. Input Extensions and DX | 0/4 | Not started | - |

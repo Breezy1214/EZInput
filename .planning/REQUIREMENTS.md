@@ -9,12 +9,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Core Builder API
 
-- [ ] **BLDR-01**: Developer can create input context via `EZInput.context("name")` fluent call
-- [ ] **BLDR-02**: Developer can chain action creation via `:action("name")` on a context
+- [x] **BLDR-01**: Developer can create input context via `EZInput.context("name")` fluent call
+- [x] **BLDR-02**: Developer can chain action creation via `:action("name")` on a context
 - [ ] **BLDR-03**: Developer can chain binding via `:bind(KeyCode)` on an action
 - [ ] **BLDR-04**: Developer can attach callbacks via `:onPressed(fn)`, `:onReleased(fn)`, `:onStateChanged(fn)`
 - [ ] **BLDR-05**: Bool action type fires Pressed/Released/StateChanged events correctly
-- [ ] **BLDR-06**: Developer can destroy a context and all its children/connections are cleaned up
+- [x] **BLDR-06**: Developer can destroy a context and all its children/connections are cleaned up
 
 ### Input Devices
 
@@ -71,12 +71,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BLDR-01 | Phase 2 | Pending |
-| BLDR-02 | Phase 2 | Pending |
+| BLDR-01 | Phase 2 | Complete |
+| BLDR-02 | Phase 2 | Complete |
 | BLDR-03 | Phase 2 | Pending |
 | BLDR-04 | Phase 2 | Pending |
 | BLDR-05 | Phase 2 | Pending |
-| BLDR-06 | Phase 2 | Pending |
+| BLDR-06 | Phase 2 | Complete |
 | INPT-01 | Phase 2 | Pending |
 | INPT-02 | Phase 2 | Pending |
 | INPT-03 | Phase 3 | Pending |
