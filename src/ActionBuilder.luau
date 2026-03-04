@@ -19,6 +19,7 @@ export type ActionBuilderImpl = typeof(setmetatable(
 		_trove: any, -- child Trove
 		_name: string,
 		_destroyed: boolean,
+		_eventsWired: boolean,
 		_contextBuilder: any, -- ContextBuilder back-reference
 		_bindings: { [string]: any },
 		_callbacks: {
@@ -40,6 +41,7 @@ function ActionBuilder.new(name: string, contextBuilder: any, parentTrove: any):
 		_trove = trove,
 		_name = name,
 		_destroyed = false,
+		_eventsWired = false,
 		_contextBuilder = contextBuilder,
 		_bindings = {} :: { [string]: any },
 		_callbacks = {
@@ -50,6 +52,32 @@ function ActionBuilder.new(name: string, contextBuilder: any, parentTrove: any):
 	}, ActionBuilder)
 
 	return self
+end
+
+function ActionBuilder._wireEvents(self: ActionBuilderImpl)
+	if self._eventsWired then
+		return
+	end
+	self._eventsWired = true
+
+	local connection = self._instance.ActionTriggered:Connect(function(state: boolean, input: InputObject)
+		if state == true then
+			for _, cb in self._callbacks.pressed do
+				cb(self._name, input)
+			end
+			for _, cb in self._callbacks.stateChanged do
+				cb(self._name, true, input)
+			end
+		else
+			for _, cb in self._callbacks.released do
+				cb(self._name, input)
+			end
+			for _, cb in self._callbacks.stateChanged do
+				cb(self._name, false, input)
+			end
+		end
+	end)
+	self._trove:Add(connection)
 end
 
 function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
@@ -77,6 +105,7 @@ function ActionBuilder.onPressed(
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
 	end
+	self:_wireEvents()
 	table.insert(self._callbacks.pressed, callback)
 	return self
 end
@@ -88,6 +117,7 @@ function ActionBuilder.onReleased(
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
 	end
+	self:_wireEvents()
 	table.insert(self._callbacks.released, callback)
 	return self
 end
@@ -99,6 +129,7 @@ function ActionBuilder.onStateChanged(
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
 	end
+	self:_wireEvents()
 	table.insert(self._callbacks.stateChanged, callback)
 	return self
 end
