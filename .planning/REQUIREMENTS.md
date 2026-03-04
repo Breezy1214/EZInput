@@ -32,8 +32,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Developer Experience
 
-- [ ] **DEVX-01**: All public APIs have `--!strict` Luau type annotations
-- [ ] **DEVX-02**: Package exports consumer-facing types for autocomplete
+- [x] **DEVX-01**: All public APIs have `--!strict` Luau type annotations
+- [x] **DEVX-02**: Package exports consumer-facing types for autocomplete
 - [x] **DEVX-03**: Package is installable via Wally with standard `wally.toml`
 - [ ] **DEVX-04**: Developer can rebind an action to a different KeyCode at runtime
 - [ ] **DEVX-05**: Developer can look up actions/contexts by name via a registry
@@ -85,8 +85,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CTXT-01 | Phase 2 | Pending |
 | CTXT-02 | Phase 2 | Pending |
 | CTXT-03 | Phase 2 | Pending |
-| DEVX-01 | Phase 1 | Pending |
-| DEVX-02 | Phase 1 | Pending |
+| DEVX-01 | Phase 1 | Complete |
+| DEVX-02 | Phase 1 | Complete |
 | DEVX-03 | Phase 1 | Complete (01-01) |
 | DEVX-04 | Phase 3 | Pending |
 | DEVX-05 | Phase 3 | Pending |

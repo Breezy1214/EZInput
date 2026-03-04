@@ -12,7 +12,7 @@ EZInput ships as a three-phase Wally package. Phase 1 establishes the project sc
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Wally package scaffold, strict-type skeleton, IAS architectural guardrails
+- [x] **Phase 1: Foundation** - Wally package scaffold, strict-type skeleton, IAS architectural guardrails (completed 2026-03-04)
 - [ ] **Phase 2: Core Builder** - Fluent builder chain for Bool actions, keyboard/mouse bindings, full context management
 - [ ] **Phase 3: Input Extensions and DX** - Gamepad/touch bindings, modifier keys, rebinding API, named registry
 
@@ -75,6 +75,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/2 | In progress | - |
+| 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Core Builder | 0/3 | Not started | - |
 | 3. Input Extensions and DX | 0/4 | Not started | - |
