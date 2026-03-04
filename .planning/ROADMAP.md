@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01: Rokit + Rojo + Wally project scaffold (wally.toml, default.project.json, .luaurc, rokit.toml)
-- [ ] 01-02: Types.luau skeleton and IAS adapter stubs (client guard, adapter modules, CI workflow)
+- [x] 01-02: Types.luau skeleton and IAS adapter stubs (client guard, adapter modules, CI workflow)
 
 ### Phase 2: Core Builder
 **Goal**: Developer can write a single fluent expression to create a context, define a Bool action, bind a keyboard or mouse key, and receive Pressed/Released/StateChanged callbacks — with context enable/disable, priority, and sink working correctly
@@ -43,12 +43,12 @@ Plans:
   3. A context with Sink enabled prevents lower-priority contexts from receiving the same input
   4. Calling `:destroy()` on a context removes all child instances and disconnects all callbacks without memory leaks
   5. Pressing a bound key fires Pressed; releasing fires Released; both fire StateChanged
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: ContextBuilder and ActionBuilder with Trove cleanup and back-reference chaining
-- [ ] 02-02: BindingBuilder for keyboard/mouse KeyCodes with explicit threshold defaults (Sink fix)
-- [ ] 02-03: Context enable/disable, priority, and sink wiring; onPressed/onReleased/onStateChanged callbacks
+- [ ] 02-01-PLAN.md — Trove dependency, ContextBuilder and ActionBuilder with cleanup and back-reference chaining
+- [ ] 02-02-PLAN.md — BindingBuilder for keyboard/mouse, IAS callback wiring, EZInput.context() entry point
+- [ ] 02-03-PLAN.md — Context enable/disable, priority, and sink management verification
 
 ### Phase 3: Input Extensions and DX
 **Goal**: Developer can bind gamepad buttons, modifier key combos, and UIButton touch inputs using the same chain, and can rebind any action by name at runtime without rewriting setup code
