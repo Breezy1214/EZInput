@@ -11,24 +11,24 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **BLDR-01**: Developer can create input context via `EZInput.context("name")` fluent call
 - [x] **BLDR-02**: Developer can chain action creation via `:action("name")` on a context
-- [ ] **BLDR-03**: Developer can chain binding via `:bind(KeyCode)` on an action
-- [ ] **BLDR-04**: Developer can attach callbacks via `:onPressed(fn)`, `:onReleased(fn)`, `:onStateChanged(fn)`
-- [ ] **BLDR-05**: Bool action type fires Pressed/Released/StateChanged events correctly
+- [x] **BLDR-03**: Developer can chain binding via `:bind(KeyCode)` on an action
+- [x] **BLDR-04**: Developer can attach callbacks via `:onPressed(fn)`, `:onReleased(fn)`, `:onStateChanged(fn)`
+- [x] **BLDR-05**: Bool action type fires Pressed/Released/StateChanged events correctly
 - [x] **BLDR-06**: Developer can destroy a context and all its children/connections are cleaned up
 
 ### Input Devices
 
-- [ ] **INPT-01**: Developer can bind keyboard keys via `Enum.KeyCode`
-- [ ] **INPT-02**: Developer can bind mouse buttons via `Enum.KeyCode`
+- [x] **INPT-01**: Developer can bind keyboard keys via `Enum.KeyCode`
+- [x] **INPT-02**: Developer can bind mouse buttons via `Enum.KeyCode`
 - [ ] **INPT-03**: Developer can bind gamepad buttons and triggers via `Enum.KeyCode`
 - [ ] **INPT-04**: Developer can specify modifier keys (Shift, Ctrl, Alt) on bindings
 - [ ] **INPT-05**: Developer can bind a UIButton instance for touch input
 
 ### Context Management
 
-- [ ] **CTXT-01**: Developer can enable/disable a context at runtime
-- [ ] **CTXT-02**: Developer can set context priority (higher = fires first)
-- [ ] **CTXT-03**: Developer can enable sink to block lower-priority contexts
+- [x] **CTXT-01**: Developer can enable/disable a context at runtime
+- [x] **CTXT-02**: Developer can set context priority (higher = fires first)
+- [x] **CTXT-03**: Developer can enable sink to block lower-priority contexts
 
 ### Developer Experience
 
@@ -73,18 +73,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | BLDR-01 | Phase 2 | Complete |
 | BLDR-02 | Phase 2 | Complete |
-| BLDR-03 | Phase 2 | Pending |
-| BLDR-04 | Phase 2 | Pending |
-| BLDR-05 | Phase 2 | Pending |
+| BLDR-03 | Phase 2 | Complete |
+| BLDR-04 | Phase 2 | Complete |
+| BLDR-05 | Phase 2 | Complete |
 | BLDR-06 | Phase 2 | Complete |
-| INPT-01 | Phase 2 | Pending |
-| INPT-02 | Phase 2 | Pending |
+| INPT-01 | Phase 2 | Complete |
+| INPT-02 | Phase 2 | Complete |
 | INPT-03 | Phase 3 | Pending |
 | INPT-04 | Phase 3 | Pending |
 | INPT-05 | Phase 3 | Pending |
-| CTXT-01 | Phase 2 | Pending |
-| CTXT-02 | Phase 2 | Pending |
-| CTXT-03 | Phase 2 | Pending |
+| CTXT-01 | Phase 2 | Complete |
+| CTXT-02 | Phase 2 | Complete |
+| CTXT-03 | Phase 2 | Complete |
 | DEVX-01 | Phase 1 | Complete |
 | DEVX-02 | Phase 1 | Complete |
 | DEVX-03 | Phase 1 | Complete (01-01) |
@@ -98,4 +98,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-04*
-*Last updated: 2026-03-04 after 01-01 execution (DEVX-03 complete)*
+*Last updated: 2026-03-04 after 02-03 execution (CTXT-01, CTXT-02, CTXT-03 complete)*

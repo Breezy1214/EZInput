@@ -13,7 +13,7 @@ EZInput ships as a three-phase Wally package. Phase 1 establishes the project sc
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Wally package scaffold, strict-type skeleton, IAS architectural guardrails (completed 2026-03-04)
-- [ ] **Phase 2: Core Builder** - Fluent builder chain for Bool actions, keyboard/mouse bindings, full context management
+- [x] **Phase 2: Core Builder** - Fluent builder chain for Bool actions, keyboard/mouse bindings, full context management (completed 2026-03-04)
 - [ ] **Phase 3: Input Extensions and DX** - Gamepad/touch bindings, modifier keys, rebinding API, named registry
 
 ## Phase Details
@@ -47,8 +47,8 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — Trove dependency, ContextBuilder and ActionBuilder with cleanup and back-reference chaining
-- [ ] 02-02-PLAN.md — BindingBuilder for keyboard/mouse, IAS callback wiring, EZInput.context() entry point
-- [ ] 02-03-PLAN.md — Context enable/disable, priority, and sink management verification
+- [x] 02-02-PLAN.md — BindingBuilder for keyboard/mouse, IAS callback wiring, EZInput.context() entry point
+- [x] 02-03-PLAN.md — Context enable/disable, priority, and sink management verification
 
 ### Phase 3: Input Extensions and DX
 **Goal**: Developer can bind gamepad buttons, modifier key combos, and UIButton touch inputs using the same chain, and can rebind any action by name at runtime without rewriting setup code
@@ -76,5 +76,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
-| 2. Core Builder | 1/3 | In Progress|  |
+| 2. Core Builder | 3/3 | Complete   | 2026-03-04 |
 | 3. Input Extensions and DX | 0/4 | Not started | - |
