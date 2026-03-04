@@ -1,0 +1,12 @@
+[package]
+name = "charlesnwabuike/ezinput"
+version = "0.1.0"
+description = "Fluent chainable builder API for Roblox Input Action System"
+license = "MIT"
+authors = ["charlesnwabuike"]
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+include = ["default.project.json", "src", "wally.toml"]
+exclude = ["**"]
+
+[dependencies]
