@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Rokit + Rojo + Wally project scaffold (wally.toml, default.project.json, .luaurc, rokit.toml)
+- [x] 01-01: Rokit + Rojo + Wally project scaffold (wally.toml, default.project.json, .luaurc, rokit.toml)
 - [ ] 01-02: Types.luau skeleton and IAS adapter stubs (client guard, adapter modules, CI workflow)
 
 ### Phase 2: Core Builder
@@ -75,6 +75,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
+| 1. Foundation | 1/2 | In progress | - |
 | 2. Core Builder | 0/3 | Not started | - |
 | 3. Input Extensions and DX | 0/4 | Not started | - |
