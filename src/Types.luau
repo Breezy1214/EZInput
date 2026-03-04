@@ -1,9 +1,9 @@
 --!strict
 
 -- Callback types with strict signatures
-export type OnPressed = (actionName: string, input: InputObject) -> ()
-export type OnReleased = (actionName: string, input: InputObject) -> ()
-export type OnStateChanged = (actionName: string, newState: boolean, input: InputObject) -> ()
+export type OnPressed = (actionName: string) -> ()
+export type OnReleased = (actionName: string) -> ()
+export type OnStateChanged = (actionName: string, newState: boolean) -> ()
 
 -- Forward declarations needed for cross-references
 export type ContextBuilder = {
@@ -21,6 +21,7 @@ export type ActionBuilder = {
 	onPressed: (self: ActionBuilder, callback: OnPressed) -> ActionBuilder,
 	onReleased: (self: ActionBuilder, callback: OnReleased) -> ActionBuilder,
 	onStateChanged: (self: ActionBuilder, callback: OnStateChanged) -> ActionBuilder,
+	getState: (self: ActionBuilder) -> any,
 	context: (self: ActionBuilder) -> ContextBuilder,
 	getRawInstance: (self: ActionBuilder) -> InputAction,
 }

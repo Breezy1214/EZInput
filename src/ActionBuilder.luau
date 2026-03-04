@@ -23,9 +23,9 @@ export type ActionBuilderImpl = typeof(setmetatable(
 		_contextBuilder: any, -- ContextBuilder back-reference
 		_bindings: { [string]: any },
 		_callbacks: {
-			pressed: { (actionName: string, input: InputObject) -> () },
-			released: { (actionName: string, input: InputObject) -> () },
-			stateChanged: { (actionName: string, newState: boolean, input: InputObject) -> () },
+			pressed: { (actionName: string) -> () },
+			released: { (actionName: string) -> () },
+			stateChanged: { (actionName: string, newState: boolean) -> () },
 		},
 	},
 	ActionBuilder
@@ -60,24 +60,23 @@ function ActionBuilder._wireEvents(self: ActionBuilderImpl)
 	end
 	self._eventsWired = true
 
-	local connection = self._instance.ActionTriggered:Connect(function(state: boolean, input: InputObject)
-		if state == true then
-			for _, cb in self._callbacks.pressed do
-				cb(self._name, input)
-			end
-			for _, cb in self._callbacks.stateChanged do
-				cb(self._name, true, input)
-			end
-		else
-			for _, cb in self._callbacks.released do
-				cb(self._name, input)
-			end
-			for _, cb in self._callbacks.stateChanged do
-				cb(self._name, false, input)
-			end
+	self._trove:Add(self._instance.Pressed:Connect(function()
+		for _, cb in self._callbacks.pressed do
+			cb(self._name)
 		end
-	end)
-	self._trove:Add(connection)
+		for _, cb in self._callbacks.stateChanged do
+			cb(self._name, true)
+		end
+	end))
+
+	self._trove:Add(self._instance.Released:Connect(function()
+		for _, cb in self._callbacks.released do
+			cb(self._name)
+		end
+		for _, cb in self._callbacks.stateChanged do
+			cb(self._name, false)
+		end
+	end))
 end
 
 function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
@@ -100,7 +99,7 @@ end
 
 function ActionBuilder.onPressed(
 	self: ActionBuilderImpl,
-	callback: (actionName: string, input: InputObject) -> ()
+	callback: (actionName: string) -> ()
 ): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -112,7 +111,7 @@ end
 
 function ActionBuilder.onReleased(
 	self: ActionBuilderImpl,
-	callback: (actionName: string, input: InputObject) -> ()
+	callback: (actionName: string) -> ()
 ): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -124,7 +123,7 @@ end
 
 function ActionBuilder.onStateChanged(
 	self: ActionBuilderImpl,
-	callback: (actionName: string, newState: boolean, input: InputObject) -> ()
+	callback: (actionName: string, newState: boolean) -> ()
 ): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -132,6 +131,13 @@ function ActionBuilder.onStateChanged(
 	self:_wireEvents()
 	table.insert(self._callbacks.stateChanged, callback)
 	return self
+end
+
+function ActionBuilder.getState(self: ActionBuilderImpl): any
+	if self._destroyed then
+		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
+	end
+	return self._instance:GetState()
 end
 
 function ActionBuilder.context(self: ActionBuilderImpl): any

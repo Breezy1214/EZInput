@@ -109,8 +109,7 @@ function ContextBuilder.setSink(self: ContextBuilderImpl, sink: boolean): Contex
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
 	end
-	-- selene: allow(incorrect_standard_library_use) -- InputActionSinkBehavior is a new IAS beta enum
-	self._instance.Sink = if sink then Enum.InputActionSinkBehavior.Sink else Enum.InputActionSinkBehavior.PassThrough
+	self._instance.Sink = sink
 	return self
 end
 
