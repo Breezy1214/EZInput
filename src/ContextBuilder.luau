@@ -74,6 +74,8 @@ function ContextBuilder.action(self: ContextBuilderImpl, name: string): any
 	return actionBuilder
 end
 
+--- Enables this context to process input. Contexts auto-enable on creation.
+--- Higher-priority contexts fire before lower-priority ones.
 function ContextBuilder.enable(self: ContextBuilderImpl): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -82,6 +84,7 @@ function ContextBuilder.enable(self: ContextBuilderImpl): ContextBuilderImpl
 	return self
 end
 
+--- Disables this context. All actions and bindings remain configured but stop processing input.
 function ContextBuilder.disable(self: ContextBuilderImpl): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -90,6 +93,8 @@ function ContextBuilder.disable(self: ContextBuilderImpl): ContextBuilderImpl
 	return self
 end
 
+--- Sets context priority. Higher values fire first. Default is 0.
+--- Use for layered input: UI menus (priority 10) override gameplay (priority 1).
 function ContextBuilder.setPriority(self: ContextBuilderImpl, priority: number): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -98,6 +103,8 @@ function ContextBuilder.setPriority(self: ContextBuilderImpl, priority: number):
 	return self
 end
 
+--- When sink is true, this context blocks lower-priority contexts from receiving the same input.
+--- When false (default), input passes through to all contexts regardless of priority.
 function ContextBuilder.setSink(self: ContextBuilderImpl, sink: boolean): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
