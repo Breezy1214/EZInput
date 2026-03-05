@@ -156,11 +156,6 @@ Creates a new input context.
 | `context()` | `ContextBuilder` | Navigate back to root context |
 | `getRawInstance()` | `InputBinding` | Access the underlying Roblox instance |
 
-## Requirements
-
-- **Client-only** — EZInput must be required from a LocalScript or client-context script
-- **Roblox Engine** — requires the Input Action System (InputContext, InputAction, InputBinding)
-
 ## License
 
 MIT
