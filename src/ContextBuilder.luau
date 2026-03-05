@@ -1,15 +1,9 @@
 --!strict
-local Trove = require(script.Parent.Packages.Trove)
+local Janitor = require(script.Parent.Packages.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
 
 -- Lazy require to break circular dependency (ContextBuilder <-> ActionBuilder)
-local ActionBuilder
-local function getActionBuilder()
-	if not ActionBuilder then
-		ActionBuilder = require(script.Parent.ActionBuilder)
-	end
-	return ActionBuilder
-end
+local ActionBuilder = require(script.Parent.ActionBuilder)
 
 local ContextBuilder = {}
 ContextBuilder.__index = ContextBuilder
@@ -17,7 +11,7 @@ ContextBuilder.__index = ContextBuilder
 export type ContextBuilderImpl = typeof(setmetatable(
 	{} :: {
 		_instance: InputContext,
-		_trove: Trove.Trove,
+		_janitor: typeof(Janitor.new()),
 		_name: string,
 		_destroyed: boolean,
 		_actions: { [string]: any },
@@ -31,8 +25,8 @@ function ContextBuilder.new(name: string, registry: { [string]: any }): ContextB
 		error("[EZInput] Duplicate context name: '" .. name .. "'", 2)
 	end
 
-	local trove = Trove.new()
-	local instance = trove:Add(IASAdapter.newContext(name))
+	local janitor = Janitor.new()
+	local instance = janitor:Add(IASAdapter.newContext(name))
 
 	-- Parent to LocalPlayer.PlayerGui — standard IAS parent for client contexts
 	local Players = game:GetService("Players")
@@ -44,7 +38,7 @@ function ContextBuilder.new(name: string, registry: { [string]: any }): ContextB
 
 	local self = setmetatable({
 		_instance = instance,
-		_trove = trove,
+		_janitor = janitor,
 		_name = name,
 		_destroyed = false,
 		_actions = {} :: { [string]: any },
@@ -64,8 +58,7 @@ function ContextBuilder.action(self: ContextBuilderImpl, name: string): any
 		error("[EZInput] Duplicate action name: '" .. name .. "' in context '" .. self._name .. "'", 2)
 	end
 
-	local AB = getActionBuilder()
-	local actionBuilder = AB.new(name, self, self._trove)
+	local actionBuilder = ActionBuilder.new(name, self, self._janitor)
 
 	-- Parent the InputAction to this context's InputContext
 	actionBuilder:getRawInstance().Parent = self._instance
@@ -119,7 +112,7 @@ function ContextBuilder.destroy(self: ContextBuilderImpl)
 	end
 	self._destroyed = true
 	self._registry[self._name] = nil
-	self._trove:Destroy()
+	self._janitor:Destroy()
 end
 
 function ContextBuilder.getRawInstance(self: ContextBuilderImpl): InputContext

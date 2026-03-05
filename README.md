@@ -9,7 +9,7 @@ A fluent, chainable builder API for Roblox's [Input Action System](https://creat
 - **Event Callbacks** — `onPressed`, `onReleased`, and `onStateChanged` with clean signatures
 - **Context Management** — enable, disable, set priority, and control input sinking
 - **Modifier Keys** — Shift+F, Ctrl+G, and other key combos via `withModifier`
-- **Automatic Cleanup** — built on [Trove](https://sleitnick.github.io/RbxUtil/api/Trove/) for leak-free destruction
+- **Automatic Cleanup** — built on [Janitor](https://github.com/howmanysmall/Janitor) for leak-free destruction
 - **Fully Typed** — `--!strict` Luau type annotations throughout
 
 ## Installation
@@ -20,18 +20,8 @@ Add to your `wally.toml`:
 
 ```toml
 [dependencies]
-EZInput = "charlesnwabuike/ezinput@0.1.0"
+EZInput = "breezy1214/ezinput@0.1.0"
 ```
-
-Then run:
-
-```bash
-wally install
-```
-
-### Manual
-
-Copy the `src` folder into your project and ensure [Trove](https://github.com/Sleitnick/RbxUtil/tree/main/modules/trove) is available in your packages.
 
 ## Quick Start
 
@@ -170,7 +160,6 @@ Creates a new input context.
 
 - **Client-only** — EZInput must be required from a LocalScript or client-context script
 - **Roblox Engine** — requires the Input Action System (InputContext, InputAction, InputBinding)
-- **Trove** — included automatically via Wally
 
 ## License
 

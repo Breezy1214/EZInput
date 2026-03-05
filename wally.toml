@@ -10,4 +10,4 @@ include = ["default.project.json", "src", "wally.toml"]
 exclude = ["**"]
 
 [dependencies]
-Trove = "sleitnick/trove@1.1.0"
+Janitor = "howmanysmall/janitor@1.18.3"

@@ -1,4 +1,5 @@
 --!strict
+local Janitor = require(script.Parent.Packages.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
 
 local BindingBuilder = {}
@@ -7,7 +8,7 @@ BindingBuilder.__index = BindingBuilder
 export type BindingBuilderImpl = typeof(setmetatable(
 	{} :: {
 		_instance: InputBinding,
-		_trove: any, -- child Trove
+		_janitor: any, 
 		_name: string,
 		_destroyed: boolean,
 		_actionBuilder: any, -- ActionBuilder back-reference
@@ -20,15 +21,14 @@ function BindingBuilder.new(
 	keyCode: Enum.KeyCode,
 	actionBuilder: any,
 	contextBuilder: any,
-	parentTrove: any
+	parentJanitor: any
 ): BindingBuilderImpl
-	-- Create a child trove so parent action destroy cascades
-	local trove = parentTrove:Extend()
-	local instance = trove:Add(IASAdapter.newBinding(keyCode))
+	local janitor = parentJanitor:Add(Janitor.new(), "Destroy")
+	local instance = janitor:Add(IASAdapter.newBinding(keyCode))
 
 	local self = setmetatable({
 		_instance = instance,
-		_trove = trove,
+		_janitor = janitor,
 		_name = keyCode.Name,
 		_destroyed = false,
 		_actionBuilder = actionBuilder,
@@ -73,7 +73,7 @@ function BindingBuilder.destroy(self: BindingBuilderImpl)
 		return
 	end
 	self._destroyed = true
-	self._trove:Destroy()
+	self._janitor:Destroy()
 end
 
 function BindingBuilder.getRawInstance(self: BindingBuilderImpl): InputBinding

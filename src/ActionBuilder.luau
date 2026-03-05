@@ -1,14 +1,7 @@
 --!strict
+local Janitor = require(script.Parent.Packages.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
-
--- Lazy require to break circular dependency (ActionBuilder <-> BindingBuilder)
-local BindingBuilder
-local function getBindingBuilder()
-	if not BindingBuilder then
-		BindingBuilder = require(script.Parent.BindingBuilder)
-	end
-	return BindingBuilder
-end
+local BindingBuilder = require(script.Parent.BindingBuilder)
 
 local ActionBuilder = {}
 ActionBuilder.__index = ActionBuilder
@@ -16,7 +9,7 @@ ActionBuilder.__index = ActionBuilder
 export type ActionBuilderImpl = typeof(setmetatable(
 	{} :: {
 		_instance: InputAction,
-		_trove: any, -- child Trove
+		_janitor: any, -- child Janitor
 		_name: string,
 		_destroyed: boolean,
 		_eventsWired: boolean,
@@ -31,14 +24,13 @@ export type ActionBuilderImpl = typeof(setmetatable(
 	ActionBuilder
 ))
 
-function ActionBuilder.new(name: string, contextBuilder: any, parentTrove: any): ActionBuilderImpl
-	-- Create a child trove so parent context destroy cascades
-	local trove = parentTrove:Extend()
-	local instance = trove:Add(IASAdapter.newAction(name, Enum.InputActionType.Bool))
+function ActionBuilder.new(name: string, contextBuilder: any, parentJanitor: any): ActionBuilderImpl
+	local janitor = parentJanitor:Add(Janitor.new(), "Destroy")
+	local instance = janitor:Add(IASAdapter.newAction(name, Enum.InputActionType.Bool))
 
 	local self = setmetatable({
 		_instance = instance,
-		_trove = trove,
+		_janitor = janitor,
 		_name = name,
 		_destroyed = false,
 		_eventsWired = false,
@@ -60,7 +52,7 @@ function ActionBuilder._wireEvents(self: ActionBuilderImpl)
 	end
 	self._eventsWired = true
 
-	self._trove:Add(self._instance.Pressed:Connect(function()
+	self._janitor:Add(self._instance.Pressed:Connect(function()
 		for _, cb in self._callbacks.pressed do
 			cb(self._name)
 		end
@@ -69,7 +61,7 @@ function ActionBuilder._wireEvents(self: ActionBuilderImpl)
 		end
 	end))
 
-	self._trove:Add(self._instance.Released:Connect(function()
+	self._janitor:Add(self._instance.Released:Connect(function()
 		for _, cb in self._callbacks.released do
 			cb(self._name)
 		end
@@ -87,8 +79,7 @@ function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
 		error("[EZInput] Duplicate binding '" .. keyCode.Name .. "' on action '" .. self._name .. "'", 2)
 	end
 
-	local BB = getBindingBuilder()
-	local bindingBuilder = BB.new(keyCode, self, self._contextBuilder, self._trove)
+	local bindingBuilder = BindingBuilder.new(keyCode, self, self._contextBuilder, self._janitor)
 
 	-- Parent the InputBinding to this action's InputAction
 	bindingBuilder:getRawInstance().Parent = self._instance
@@ -97,10 +88,7 @@ function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
 	return bindingBuilder
 end
 
-function ActionBuilder.onPressed(
-	self: ActionBuilderImpl,
-	callback: (actionName: string) -> ()
-): ActionBuilderImpl
+function ActionBuilder.onPressed(self: ActionBuilderImpl, callback: (actionName: string) -> ()): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
 	end
@@ -109,10 +97,7 @@ function ActionBuilder.onPressed(
 	return self
 end
 
-function ActionBuilder.onReleased(
-	self: ActionBuilderImpl,
-	callback: (actionName: string) -> ()
-): ActionBuilderImpl
+function ActionBuilder.onReleased(self: ActionBuilderImpl, callback: (actionName: string) -> ()): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
 	end
@@ -152,7 +137,7 @@ function ActionBuilder.destroy(self: ActionBuilderImpl)
 		return
 	end
 	self._destroyed = true
-	self._trove:Destroy()
+	self._janitor:Destroy()
 end
 
 function ActionBuilder.getRawInstance(self: ActionBuilderImpl): InputAction
