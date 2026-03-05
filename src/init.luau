@@ -15,11 +15,14 @@ export type OnPressed = Types.OnPressed
 export type OnReleased = Types.OnReleased
 export type OnStateChanged = Types.OnStateChanged
 
--- Shared context registry for duplicate name detection
 local contextRegistry: { [string]: any } = {}
 
+--- @class EZInput
 local EZInput = {}
 
+--- Creates a new input context builder with the given name.
+--- @param name string
+--- @return ContextBuilder
 function EZInput.context(name: string): Types.ContextBuilder
 	return ContextBuilder.new(name, contextRegistry) :: any
 end

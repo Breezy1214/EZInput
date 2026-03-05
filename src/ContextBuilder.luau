@@ -5,6 +5,7 @@ local IASAdapter = require(script.Parent.IASAdapter)
 -- Lazy require to break circular dependency (ContextBuilder <-> ActionBuilder)
 local ActionBuilder = require(script.Parent.ActionBuilder)
 
+--- @class ContextBuilder
 local ContextBuilder = {}
 ContextBuilder.__index = ContextBuilder
 
@@ -20,6 +21,10 @@ export type ContextBuilderImpl = typeof(setmetatable(
 	ContextBuilder
 ))
 
+--- Creates a new input context and registers it by name.
+--- @param name string
+--- @param registry table<string, any>
+--- @return ContextBuilder
 function ContextBuilder.new(name: string, registry: { [string]: any }): ContextBuilderImpl
 	if registry[name] then
 		error("[EZInput] Duplicate context name: '" .. name .. "'", 2)
@@ -28,12 +33,9 @@ function ContextBuilder.new(name: string, registry: { [string]: any }): ContextB
 	local janitor = Janitor.new()
 	local instance = janitor:Add(IASAdapter.newContext(name))
 
-	-- Parent to LocalPlayer.PlayerGui — standard IAS parent for client contexts
 	local Players = game:GetService("Players")
 	local localPlayer = Players.LocalPlayer
 	instance.Parent = localPlayer:WaitForChild("PlayerGui")
-
-	-- Auto-enable on creation per project decision
 	instance.Enabled = true
 
 	local self = setmetatable({
@@ -50,6 +52,9 @@ function ContextBuilder.new(name: string, registry: { [string]: any }): ContextB
 	return self
 end
 
+--- Creates and parents an action under this context.
+--- @param name string
+--- @return ActionBuilder
 function ContextBuilder.action(self: ContextBuilderImpl, name: string): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -59,16 +64,14 @@ function ContextBuilder.action(self: ContextBuilderImpl, name: string): any
 	end
 
 	local actionBuilder = ActionBuilder.new(name, self, self._janitor)
-
-	-- Parent the InputAction to this context's InputContext
 	actionBuilder:getRawInstance().Parent = self._instance
 
 	self._actions[name] = actionBuilder
 	return actionBuilder
 end
 
---- Enables this context to process input. Contexts auto-enable on creation.
---- Higher-priority contexts fire before lower-priority ones.
+--- Enables this context so it can process input.
+--- @return ContextBuilder
 function ContextBuilder.enable(self: ContextBuilderImpl): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -77,7 +80,8 @@ function ContextBuilder.enable(self: ContextBuilderImpl): ContextBuilderImpl
 	return self
 end
 
---- Disables this context. All actions and bindings remain configured but stop processing input.
+--- Disables this context while preserving configured actions and bindings.
+--- @return ContextBuilder
 function ContextBuilder.disable(self: ContextBuilderImpl): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -86,8 +90,9 @@ function ContextBuilder.disable(self: ContextBuilderImpl): ContextBuilderImpl
 	return self
 end
 
---- Sets context priority. Higher values fire first. Default is 0.
---- Use for layered input: UI menus (priority 10) override gameplay (priority 1).
+--- Sets context priority. Higher values receive input first.
+--- @param priority number
+--- @return ContextBuilder
 function ContextBuilder.setPriority(self: ContextBuilderImpl, priority: number): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -96,8 +101,9 @@ function ContextBuilder.setPriority(self: ContextBuilderImpl, priority: number):
 	return self
 end
 
---- When sink is true, this context blocks lower-priority contexts from receiving the same input.
---- When false (default), input passes through to all contexts regardless of priority.
+--- Sets whether this context blocks lower-priority contexts for matching input.
+--- @param sink boolean
+--- @return ContextBuilder
 function ContextBuilder.setSink(self: ContextBuilderImpl, sink: boolean): ContextBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)
@@ -106,6 +112,7 @@ function ContextBuilder.setSink(self: ContextBuilderImpl, sink: boolean): Contex
 	return self
 end
 
+--- Destroys this context and removes it from the context registry.
 function ContextBuilder.destroy(self: ContextBuilderImpl)
 	if self._destroyed then
 		return
@@ -115,6 +122,8 @@ function ContextBuilder.destroy(self: ContextBuilderImpl)
 	self._janitor:Destroy()
 end
 
+--- Returns the underlying InputContext instance.
+--- @return InputContext
 function ContextBuilder.getRawInstance(self: ContextBuilderImpl): InputContext
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed context '" .. self._name .. "'", 2)

@@ -1,0 +1,21 @@
+title = "EZInput"
+gitRepoUrl = "https://github.com/Breezy1214/EZInput"
+gitSourceBranch = "main"
+
+[[classOrder]]
+section = "Entry Point"
+classes = ["EZInput"]
+
+[[classOrder]]
+section = "Builders"
+classes = ["ContextBuilder", "ActionBuilder", "BindingBuilder"]
+collapsed = false
+
+[docusaurus]
+onBrokenLinks = "throw"
+onBrokenMarkdownLinks = "warn"
+
+[[navbar.items]]
+href = "/cheat-sheet"
+label = "Cheat Sheet"
+position = "left"

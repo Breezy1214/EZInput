@@ -3,17 +3,18 @@ local Janitor = require(script.Parent.Packages.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
 local BindingBuilder = require(script.Parent.BindingBuilder)
 
+--- @class ActionBuilder
 local ActionBuilder = {}
 ActionBuilder.__index = ActionBuilder
 
 export type ActionBuilderImpl = typeof(setmetatable(
 	{} :: {
 		_instance: InputAction,
-		_janitor: any, -- child Janitor
+		_janitor: any,
 		_name: string,
 		_destroyed: boolean,
 		_eventsWired: boolean,
-		_contextBuilder: any, -- ContextBuilder back-reference
+		_contextBuilder: any,
 		_bindings: { [string]: any },
 		_callbacks: {
 			pressed: { (actionName: string) -> () },
@@ -71,6 +72,9 @@ function ActionBuilder._wireEvents(self: ActionBuilderImpl)
 	end))
 end
 
+--- Creates and parents a new binding under this action.
+--- @param keyCode Enum.KeyCode
+--- @return BindingBuilder
 function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -80,14 +84,15 @@ function ActionBuilder.bind(self: ActionBuilderImpl, keyCode: Enum.KeyCode): any
 	end
 
 	local bindingBuilder = BindingBuilder.new(keyCode, self, self._contextBuilder, self._janitor)
-
-	-- Parent the InputBinding to this action's InputAction
 	bindingBuilder:getRawInstance().Parent = self._instance
 
 	self._bindings[keyCode.Name] = bindingBuilder
 	return bindingBuilder
 end
 
+--- Registers a callback fired when this action is pressed.
+--- @param callback (actionName: string) -> ()
+--- @return ActionBuilder
 function ActionBuilder.onPressed(self: ActionBuilderImpl, callback: (actionName: string) -> ()): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -97,6 +102,9 @@ function ActionBuilder.onPressed(self: ActionBuilderImpl, callback: (actionName:
 	return self
 end
 
+--- Registers a callback fired when this action is released.
+--- @param callback (actionName: string) -> ()
+--- @return ActionBuilder
 function ActionBuilder.onReleased(self: ActionBuilderImpl, callback: (actionName: string) -> ()): ActionBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -106,6 +114,9 @@ function ActionBuilder.onReleased(self: ActionBuilderImpl, callback: (actionName
 	return self
 end
 
+--- Registers a callback fired whenever this action's pressed state changes.
+--- @param callback (actionName: string, newState: boolean) -> ()
+--- @return ActionBuilder
 function ActionBuilder.onStateChanged(
 	self: ActionBuilderImpl,
 	callback: (actionName: string, newState: boolean) -> ()
@@ -118,6 +129,8 @@ function ActionBuilder.onStateChanged(
 	return self
 end
 
+--- Returns the current input state for this action.
+--- @return any
 function ActionBuilder.getState(self: ActionBuilderImpl): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -125,6 +138,8 @@ function ActionBuilder.getState(self: ActionBuilderImpl): any
 	return self._instance:GetState()
 end
 
+--- Returns this action's owning context builder.
+--- @return ContextBuilder
 function ActionBuilder.context(self: ActionBuilderImpl): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)
@@ -132,6 +147,7 @@ function ActionBuilder.context(self: ActionBuilderImpl): any
 	return self._contextBuilder
 end
 
+--- Destroys this action and all resources owned by its janitor.
 function ActionBuilder.destroy(self: ActionBuilderImpl)
 	if self._destroyed then
 		return
@@ -140,6 +156,8 @@ function ActionBuilder.destroy(self: ActionBuilderImpl)
 	self._janitor:Destroy()
 end
 
+--- Returns the underlying InputAction instance.
+--- @return InputAction
 function ActionBuilder.getRawInstance(self: ActionBuilderImpl): InputAction
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed action '" .. self._name .. "'", 2)

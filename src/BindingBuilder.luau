@@ -2,17 +2,18 @@
 local Janitor = require(script.Parent.Packages.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
 
+--- @class BindingBuilder
 local BindingBuilder = {}
 BindingBuilder.__index = BindingBuilder
 
 export type BindingBuilderImpl = typeof(setmetatable(
 	{} :: {
 		_instance: InputBinding,
-		_janitor: any, 
+		_janitor: any,
 		_name: string,
 		_destroyed: boolean,
-		_actionBuilder: any, -- ActionBuilder back-reference
-		_contextBuilder: any, -- ContextBuilder back-reference
+		_actionBuilder: any,
+		_contextBuilder: any,
 	},
 	BindingBuilder
 ))
@@ -38,6 +39,9 @@ function BindingBuilder.new(
 	return self
 end
 
+--- Sets the primary modifier key for this binding.
+--- @param modifier Enum.KeyCode
+--- @return BindingBuilder
 function BindingBuilder.withModifier(self: BindingBuilderImpl, modifier: Enum.KeyCode): BindingBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed binding '" .. self._name .. "'", 2)
@@ -46,6 +50,9 @@ function BindingBuilder.withModifier(self: BindingBuilderImpl, modifier: Enum.Ke
 	return self
 end
 
+--- Sets the secondary modifier key for this binding.
+--- @param modifier Enum.KeyCode
+--- @return BindingBuilder
 function BindingBuilder.withSecondaryModifier(self: BindingBuilderImpl, modifier: Enum.KeyCode): BindingBuilderImpl
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed binding '" .. self._name .. "'", 2)
@@ -54,6 +61,8 @@ function BindingBuilder.withSecondaryModifier(self: BindingBuilderImpl, modifier
 	return self
 end
 
+--- Returns this binding's owning action builder.
+--- @return ActionBuilder
 function BindingBuilder.action(self: BindingBuilderImpl): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed binding '" .. self._name .. "'", 2)
@@ -61,6 +70,8 @@ function BindingBuilder.action(self: BindingBuilderImpl): any
 	return self._actionBuilder
 end
 
+--- Returns this binding's owning context builder.
+--- @return ContextBuilder
 function BindingBuilder.context(self: BindingBuilderImpl): any
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed binding '" .. self._name .. "'", 2)
@@ -68,6 +79,7 @@ function BindingBuilder.context(self: BindingBuilderImpl): any
 	return self._contextBuilder
 end
 
+--- Destroys this binding and its managed resources.
 function BindingBuilder.destroy(self: BindingBuilderImpl)
 	if self._destroyed then
 		return
@@ -76,6 +88,8 @@ function BindingBuilder.destroy(self: BindingBuilderImpl)
 	self._janitor:Destroy()
 end
 
+--- Returns the underlying InputBinding instance.
+--- @return InputBinding
 function BindingBuilder.getRawInstance(self: BindingBuilderImpl): InputBinding
 	if self._destroyed then
 		error("[EZInput] Cannot use destroyed binding '" .. self._name .. "'", 2)

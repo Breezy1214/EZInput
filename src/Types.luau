@@ -1,11 +1,7 @@
 --!strict
-
--- Callback types with strict signatures
 export type OnPressed = (actionName: string) -> ()
 export type OnReleased = (actionName: string) -> ()
 export type OnStateChanged = (actionName: string, newState: boolean) -> ()
-
--- Forward declarations needed for cross-references
 export type ContextBuilder = {
 	action: (self: ContextBuilder, name: string) -> ActionBuilder,
 	enable: (self: ContextBuilder) -> ContextBuilder,

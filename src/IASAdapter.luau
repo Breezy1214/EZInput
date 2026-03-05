@@ -4,7 +4,7 @@ local IASAdapter = {}
 function IASAdapter.newContext(name: string): InputContext
 	local context = Instance.new("InputContext")
 	context.Name = name
-	context.Enabled = false -- disabled until explicitly activated
+	context.Enabled = false
 	return context
 end
 
