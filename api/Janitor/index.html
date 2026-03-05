@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="plugin-moonwave plugin-id-moonwave" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Janitor | EZInput</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Breezy1214.github.io/EZInput/api/Janitor"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Janitor | EZInput"><meta data-rh="true" name="description" content="Janitor is a light-weight, flexible object for cleaning up connections,
+instances, or anything. This implementation covers all use cases, as it
+doesn&#x27;t force you to rely on naive typechecking to guess how an instance
+should be cleaned up. Instead, the developer may specify any behavior for
+any object.
+
+This is the fastest OOP library on Roblox of its kind on both X86-64 as
+well as ARM64."><meta data-rh="true" property="og:description" content="Janitor is a light-weight, flexible object for cleaning up connections,
+instances, or anything. This implementation covers all use cases, as it
+doesn&#x27;t force you to rely on naive typechecking to guess how an instance
+should be cleaned up. Instead, the developer may specify any behavior for
+any object.
+
+This is the fastest OOP library on Roblox of its kind on both X86-64 as
+well as ARM64."><link data-rh="true" rel="canonical" href="https://Breezy1214.github.io/EZInput/api/Janitor"><link data-rh="true" rel="alternate" href="https://Breezy1214.github.io/EZInput/api/Janitor" hreflang="en"><link data-rh="true" rel="alternate" href="https://Breezy1214.github.io/EZInput/api/Janitor" hreflang="x-default"><link rel="stylesheet" href="/EZInput/assets/css/styles.7a4bdbad.css">
+<script src="/EZInput/assets/js/runtime~main.f86a8874.js" defer="defer"></script>
+<script src="/EZInput/assets/js/main.ebe47f7c.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/EZInput/"><b class="navbar__title text--truncate">EZInput</b></a><a class="navbar__item navbar__link" href="/EZInput/docs/intro">Docs</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/EZInput/api/">API</a><a class="navbar__item navbar__link" href="/EZInput/cheat-sheet">Cheat Sheet</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/Breezy1214/EZInput" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0 docPageContainer_wNNk"><div class="docPage_Dpn1"><div class="docSidebarContainer_o_re"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/EZInput/api/EZInput">Entry Point</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/EZInput/api/ContextBuilder">Builders</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/EZInput/api/ContextBuilder">​Context​Builder</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/EZInput/api/ActionBuilder">​Action​Builder</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/EZInput/api/BindingBuilder">​Binding​Builder</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/EZInput/api/Error">​Error</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/EZInput/api/Janitor">​Janitor</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/EZInput/api/Promise">​Promise</a></li></ul></nav></div></div><main class="docMainContainer_HJE1"><div class="container padding-vert--lg"><div class="row"><div class="col docItemCol_MU3C"><div class="docItemContainer_Wv98"><article><div class="member_J0w1 markdown"><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_oUs_"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><header><h1 class="docTitle_mZRt" style="text-decoration:none"><span style="display:inline-block">Janitor</span></h1><div class="luaClassTags_EipM"></div><div>
+<p>
+  Janitor is a light-weight, flexible object for cleaning up connections,
+  instances, or anything. This implementation covers all use cases, as it
+  doesn't force you to rely on naive typechecking to guess how an instance
+  should be cleaned up. Instead, the developer may specify any behavior for
+  any object.
+</p>
+<p>
+  This is the fastest OOP library on Roblox of its kind on both X86-64 as
+  well as ARM64.
+</p>
+</div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="properties">Properties<a href="#properties" class="hash-link" aria-label="Direct link to Properties" title="Direct link to Properties">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="CurrentlyCleaning"><code style="text-decoration:none">CurrentlyCleaning</code><a href="#CurrentlyCleaning" class="hash-link" aria-label="Direct link to CurrentlyCleaning" title="Direct link to CurrentlyCleaning">​</a></h3><span class="badge_Ba2I" style="color:#e74c3c"><span class="badgeTooltip_cWXP">This item is read only and cannot be modified.</span><span class="badgeToolTipTail_H9D_"><svg xmlns="http://www.w3.org/2000/svg" height="300px" width="300px" fill="#e74c3c" x="0px" y="0px" viewBox="0 0 96 96"><path d="M70.354,15.662h-7.496H25.566c-3.282,0-5.19-0.776-5.728-1.169v-1.456c0.538-0.393,2.445-1.168,5.728-1.168h46.479V8H25.566  c-4.776,0-9.594,1.468-9.594,4.747v61.458C15.972,86.645,20.328,88,37.495,88h42.535V15.662H70.354z"></path></svg> <!-- -->Read Only</span></span><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L134"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.<!-- -->CurrentlyCleaning<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
+<p>Whether or not the Janitor is currently cleaning up.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="SuppressInstanceReDestroy"><code style="text-decoration:none">SuppressInstanceReDestroy</code><a href="#SuppressInstanceReDestroy" class="hash-link" aria-label="Direct link to SuppressInstanceReDestroy" title="Direct link to SuppressInstanceReDestroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->1.15.4</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L142"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.<!-- -->SuppressInstanceReDestroy<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
+<p>
+  Whether or not you want to suppress the re-destroying of instances. Default
+  is false, which is the original behavior.
+</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="UnsafeThreadCleanup"><code style="text-decoration:none">UnsafeThreadCleanup</code><a href="#UnsafeThreadCleanup" class="hash-link" aria-label="Direct link to UnsafeThreadCleanup" title="Direct link to UnsafeThreadCleanup">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->1.18.0</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L151"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.<!-- -->UnsafeThreadCleanup<!-- -->:<!-- --> </code> <code class="blue_P4bS">boolean</code></div><div>
+<p>
+  Whether or not to use the unsafe fast defer function for cleaning up
+  threads. This might be able to throw, so be careful. If you're getting any
+  thread related errors, chances are it is this.
+</p>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="new"><code style="text-decoration:none">new</code><a href="#new" class="hash-link" aria-label="Direct link to new" title="Direct link to new">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L162"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.</code><code class="green_DgR4">new</code><code>(</code><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code></div><div>
+<p>Instantiates a new Janitor object.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Is"><code style="text-decoration:none">Is</code><a href="#Is" class="hash-link" aria-label="Direct link to Is" title="Direct link to Is">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L175"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.</code><code class="green_DgR4">Is</code><code>(</code><div class="inset_uKQm"><div><code>object<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The object you are checking.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+<p><code>true</code> if <code>object</code> is a Janitor.</p>
+</span></span></div><div>
+<p>
+  Determines if the passed object is a Janitor. This checks the metatable
+  directly.
+</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="instanceof"><code style="text-decoration:none">instanceof</code><a href="#instanceof" class="hash-link" aria-label="Direct link to instanceof" title="Direct link to instanceof">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L188"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->.</code><code class="green_DgR4">instanceof</code><code>(</code><div class="inset_uKQm"><div><code>object<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The object you are checking.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+<p><code>true</code> if <code>object</code> is a Janitor.</p>
+</span></span></div><div>
+<p>An alias for <a href="/EZInput/api/Janitor#Is">Janitor.Is</a>. This is intended for roblox-ts support.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Add"><code style="text-decoration:none">Add</code><a href="#Add" class="hash-link" aria-label="Direct link to Add" title="Direct link to Add">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L385"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">Add</code><code>(</code><div class="inset_uKQm"><div><code>object<!-- -->: </code><code class="blue_P4bS">T</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The object you want to clean up.</p>
+</span></span></div><div><code>methodName?<!-- -->: </code><code class="blue_P4bS">boolean</code><code class="op_lSLc"> | </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The name of the method that will be used to clean up. If not passed, it will first check if the object's type exists in TypeDefaults, and if that doesn't exist, it assumes <code>Destroy</code>.</p>
+</span></span></div><div><code>index?<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index that can be used to clean up the object manually.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">T</code><span class="inlineDescription_G7Er">-- <span>
+<p>The object that was passed as the first argument.</p>
+</span></span></div><div>
+<p>
+  Adds an <code>object</code> to Janitor for later cleanup, where <code>methodName</code> is the
+  key of the method within <code>object</code> which should be called at cleanup time.
+  If the <code>methodName</code> is <code>true</code> the <code>object</code> itself will be called if it's a
+  function or have <code>task.cancel</code> called on it if it is a thread. If passed an
+  index it will occupy a namespace which can be <code>Remove()</code>d or overwritten.
+  Returns the <code>object</code>.
+</p>
+
+  
+    
+    
+      <div class="admonition admonition-info alert alert--info">
+        <div class="admonition-heading">
+          <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+                <path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path>
+              </svg></span><span class="admonition-title">Note</span></h5>
+        </div>
+        <div class="admonition-content">
+          <p>
+            Objects not given an explicit <code>methodName</code> will be passed into the <code>typeof</code>
+            function for a very naive typecheck. RBXConnections will be assigned to
+            "Disconnect", functions and threads will be assigned to <code>true</code>, and
+            everything else will default to "Destroy". Not recommended, but hey, you do
+            you.
+          </p>
+        </div>
+      </div>
+    
+  
+
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> Workspace <span class="token operator">=</span> game<span class="token punctuation">:</span><span class="token function">GetService</span><span class="token punctuation">(</span><span class="token string">"Workspace"</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> TweenService <span class="token operator">=</span> game<span class="token punctuation">:</span><span class="token function">GetService</span><span class="token punctuation">(</span><span class="token string">"TweenService"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> part <span class="token operator">=</span> Workspace<span class="token punctuation">:</span><span class="token function">FindFirstChild</span><span class="token punctuation">(</span><span class="token string">"Part"</span><span class="token punctuation">)</span> <span class="token punctuation">::</span> Part
+
+<span class="token comment">-- Queue the Part to be Destroyed at Cleanup time</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- Queue function to be called with `true` methodName</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>print<span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- Close a thread.</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token function">defer</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">while</span> <span class="token keyword">true</span> <span class="token keyword">do</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Running!"</span><span class="token punctuation">)</span>
+		task<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+	<span class="token keyword">end</span>
+<span class="token keyword">end</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- This implementation allows you to specify behavior for any object</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>TweenService<span class="token punctuation">:</span><span class="token function">Create</span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> TweenInfo<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span>one<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Cancel"</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- By passing an index, the object will occupy a namespace</span>
+<span class="token comment">-- If "CurrentTween" already exists, it will call :Remove("CurrentTween") before writing</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>TweenService<span class="token punctuation">:</span><span class="token function">Create</span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> TweenInfo<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>Size <span class="token operator">=</span> Vector3<span class="token punctuation">.</span>one<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"CurrentTween"</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Workspace</span><span class="token punctuation">,</span> <span class="token maybe-class-name">TweenService</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/services"</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">CurrentTween</span><span class="token operator">:</span> <span class="token maybe-class-name">Tween</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> part <span class="token operator">=</span> <span class="token maybe-class-name">Workspace</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">FindFirstChild</span></span><span class="token punctuation">(</span><span class="token string">"Part"</span><span class="token punctuation">)</span> <span class="token keyword module">as</span> <span class="token maybe-class-name">Part</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Queue the part to be Destroyed at Cleanup time</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Queue function to be called with `true` methodName</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span>print<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Close a thread.</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token method function property-access">defer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword control-flow">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Running!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		task<span class="token punctuation">.</span><span class="token method function property-access">wait</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// This implementation allows you to specify behavior for any object</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">TweenService</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Create</span></span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">TweenInfo</span></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Size</span><span class="token operator">:</span> <span class="token maybe-class-name">Vector3</span><span class="token punctuation">.</span><span class="token property-access">one</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Cancel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// By passing an index, the object will occupy a namespace</span>
+<span class="token comment">// If "CurrentTween" already exists, it will call :Remove("CurrentTween") before writing</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">TweenService</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Create</span></span><span class="token punctuation">(</span>part<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">TweenInfo</span></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Size</span><span class="token operator">:</span> <span class="token maybe-class-name">Vector3</span><span class="token punctuation">.</span><span class="token property-access">one</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"CurrentTween"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddObject"><code style="text-decoration:none">AddObject</code><a href="#AddObject" class="hash-link" aria-label="Direct link to AddObject" title="Direct link to AddObject">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->v1.16.0</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L415"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">AddObject</code><code>(</code><div class="inset_uKQm"><div><code>constructor<!-- -->: </code><code class="purple_ieR2">{</code><code>new<!-- -->: </code><code class="green_DgR4">(</code><code class="blue_P4bS">A...</code><code class="green_DgR4">)</code><code class="green_DgR4"> → </code><code class="blue_P4bS">T</code><code class="purple_ieR2">}</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The constructor for the object you want to add to the Janitor.</p>
+</span></span></div><div><code>methodName?<!-- -->: </code><code class="blue_P4bS">boolean</code><code class="op_lSLc"> | </code><code class="blue_P4bS">string</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The name of the method that will be used to clean up. If not passed, it will first check if the object's type exists in TypeDefaults, and if that doesn't exist, it assumes <code>Destroy</code>.</p>
+</span></span></div><div><code>index?<!-- -->: </code><code class="blue_P4bS">unknown</code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index that can be used to clean up the object manually.</p>
+</span></span></div><div><code>...<!-- -->: </code><code class="blue_P4bS">A...</code><span class="inlineDescription_G7Er">-- <span>
+<p>The arguments that will be passed to the constructor.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">T</code><span class="inlineDescription_G7Er">-- <span>
+<p>The object that was passed as the first argument.</p>
+</span></span></div><div>
+<p>
+  Constructs an object for you and adds it to the Janitor. It's really just
+  shorthand for <code>Janitor:Add(object.new(), methodName, index)</code>.
+</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> subObliterator <span class="token operator">=</span> obliterator<span class="token punctuation">:</span><span class="token function">AddObject</span><span class="token punctuation">(</span>Janitor<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">)</span>
+<span class="token comment">-- subObliterator is another Janitor!</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> subObliterator <span class="token operator">=</span> obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">AddObject</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">Janitor</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Get"><code style="text-decoration:none">Get</code><a href="#Get" class="hash-link" aria-label="Direct link to Get" title="Direct link to Get">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L453"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">Get</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index that the object is stored under.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS">unknown?</code><span class="inlineDescription_G7Er">-- <span>
+<p>This will return the object if it is found, but it won't return anything if it doesn't exist.</p>
+</span></span></div><div>
+<p>
+  Gets whatever object is stored with the given index, if it exists. This was
+  added since Maid allows getting the task using <code>__index</code>.
+</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>Workspace<span class="token punctuation">.</span>Baseplate<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>obliterator<span class="token punctuation">:</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Returns Baseplate.</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Workspace</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/services"</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">Baseplate</span><span class="token operator">:</span> <span class="token maybe-class-name">Part</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">Workspace</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">FindFirstChild</span></span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span> <span class="token keyword module">as</span> <span class="token maybe-class-name">Part</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Get</span></span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns Baseplate.</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="AddPromise"><code style="text-decoration:none">AddPromise</code><a href="#AddPromise" class="hash-link" aria-label="Direct link to AddPromise" title="Direct link to AddPromise">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L486"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">AddPromise</code><code>(</code><div class="inset_uKQm"><div><code>promiseObject<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Promise">Promise</a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The promise you want to add to the Janitor.</p>
+</span></span></div><div><code>index?<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index that can be used to clean up the object manually.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Promise">Promise</a></code></div><div>
+<p>
+  Adds a <a href="https://github.com/evaera/roblox-lua-promise">Promise</a> to the
+  Janitor. If the Janitor is cleaned up and the Promise is not completed, the
+  Promise will be cancelled.
+</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">AddPromise</span><span class="token punctuation">(</span>Promise<span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">andThenCall</span><span class="token punctuation">(</span>print<span class="token punctuation">,</span> <span class="token string">"Finished!"</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token function">catch</span><span class="token punctuation">(</span>warn<span class="token punctuation">)</span>
+task<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">AddPromise</span></span><span class="token punctuation">(</span><span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">delay</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">andThenCall</span><span class="token punctuation">(</span>print<span class="token punctuation">,</span> <span class="token string">"Finished!"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span>warn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+task<span class="token punctuation">.</span><span class="token method function property-access">wait</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Cleanup</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>NotAPromiseError</td><td>Thrown if the promise is not a Promise.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Remove"><code style="text-decoration:none">Remove</code><a href="#Remove" class="hash-link" aria-label="Direct link to Remove" title="Direct link to Remove">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L551"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">Remove</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index you want to remove.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code></div><div>
+<p>Cleans up whatever <code>Object</code> was set to this namespace by the 3rd parameter of <a href="#Add">Janitor.Add</a>.</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>workspace<span class="token punctuation">.</span>Baseplate<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Remove</span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Workspace</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/services"</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">Baseplate</span><span class="token operator">:</span> <span class="token maybe-class-name">Part</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">Workspace</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">FindFirstChild</span></span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span> <span class="token keyword module">as</span> <span class="token maybe-class-name">Part</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Remove</span></span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoveNoClean"><code style="text-decoration:none">RemoveNoClean</code><a href="#RemoveNoClean" class="hash-link" aria-label="Direct link to RemoveNoClean" title="Direct link to RemoveNoClean">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->v1.15.0</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L585"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">RemoveNoClean</code><code>(</code><div class="inset_uKQm"><div><code>index<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The index you are removing.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code></div><div>
+<p>Removes an object from the Janitor without running a cleanup.</p>
+<h3>Luau</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed!"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"Function"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">RemoveNoClean</span><span class="token punctuation">(</span><span class="token string">"Function"</span><span class="token punctuation">)</span> <span class="token comment">-- Does not print.</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token function-variable function"><span class="token maybe-class-name">Function</span></span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span></span> <span class="token keyword">void</span> <span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed!"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"Function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">RemoveNoClean</span></span><span class="token punctuation">(</span><span class="token string">"Function"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Does not print.</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoveList"><code style="text-decoration:none">RemoveList</code><a href="#RemoveList" class="hash-link" aria-label="Direct link to RemoveList" title="Direct link to RemoveList">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->v1.14.0</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L640"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">RemoveList</code><code>(</code><div class="inset_uKQm"><div><code>...<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The indices you want to remove.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code></div><div>
+<p>Cleans up multiple objects at once.</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed One"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Two"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Three"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">RemoveList</span><span class="token punctuation">(</span><span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span> <span class="token comment">-- Prints "Removed One", "Removed Two", and "Removed Three"</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">type</span> <span class="token class-name"><span class="token maybe-class-name">NoOp</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">void</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">One</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOp</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Two</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOp</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Three</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOp</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed One"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Two"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Three"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">RemoveList</span></span><span class="token punctuation">(</span><span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Prints "Removed One", "Removed Two", and "Removed Three"</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RemoveListNoClean"><code style="text-decoration:none">RemoveListNoClean</code><a href="#RemoveListNoClean" class="hash-link" aria-label="Direct link to RemoveListNoClean" title="Direct link to RemoveListNoClean">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->v1.15.0</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L711"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">RemoveListNoClean</code><code>(</code><div class="inset_uKQm"><div><code>...<!-- -->: </code><code class="blue_P4bS">unknown</code><span class="inlineDescription_G7Er">-- <span>
+<p>The indices you want to remove.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code></div><div>
+<p>Cleans up multiple objects at once without running their cleanup.</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed One"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Two"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Three"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">RemoveListNoClean</span><span class="token punctuation">(</span><span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span> <span class="token comment">-- Nothing is printed.</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">type</span> <span class="token class-name"><span class="token maybe-class-name">NoOperation</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">void</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">One</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOperation</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Two</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOperation</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Three</span><span class="token operator">:</span> <span class="token maybe-class-name">NoOperation</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed One"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Two"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Removed Three"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">RemoveListNoClean</span></span><span class="token punctuation">(</span><span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Nothing is printed.</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="GetAll"><code style="text-decoration:none">GetAll</code><a href="#GetAll" class="hash-link" aria-label="Direct link to GetAll" title="Direct link to GetAll">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->v1.15.1</span><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L796"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">GetAll</code><code>(</code><code>) → </code><code class="purple_ieR2">{</code><span><code>[</code><code class="blue_P4bS">any</code><code>]</code></span><code>: </code><code class="blue_P4bS">any</code><code class="purple_ieR2">}</code></div><div>
+<p>Returns a frozen copy of the Janitor's indices.</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span>Workspace<span class="token punctuation">.</span>Baseplate<span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>obliterator<span class="token punctuation">:</span><span class="token function">GetAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Baseplate<span class="token punctuation">)</span> <span class="token comment">-- Prints Baseplate.</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Workspace</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/services"</span><span class="token punctuation">;</span>
+<span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span><span class="token operator">&#x3C;</span><span class="token punctuation">{</span> <span class="token maybe-class-name">Baseplate</span><span class="token operator">:</span> <span class="token maybe-class-name">Part</span> <span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token maybe-class-name">Workspace</span><span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">FindFirstChild</span></span><span class="token punctuation">(</span><span class="token string">"Baseplate"</span><span class="token punctuation">)</span> <span class="token keyword module">as</span> <span class="token maybe-class-name">Part</span><span class="token punctuation">,</span> <span class="token string">"Destroy"</span><span class="token punctuation">,</span> <span class="token string">"Baseplate"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">GetAll</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Baseplate</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Prints Baseplate.</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Cleanup"><code style="text-decoration:none">Cleanup</code><a href="#Cleanup" class="hash-link" aria-label="Direct link to Cleanup" title="Direct link to Cleanup">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L824"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">Cleanup</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>
+  Calls each object's <code>methodName</code> (or calls the object if
+  <code>methodName == true</code>) and removes them from the Janitor. Also clears the
+  namespace. This function is also called when you call a Janitor object (so
+  it can be used as a destructor callback).
+</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua">obliterator<span class="token punctuation">:</span><span class="token function">Cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- Valid.</span>
+<span class="token function">obliterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">-- Also valid.</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts">obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Cleanup</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// TypeScript version doesn't support the __call method of cleaning.</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Destroy"><code style="text-decoration:none">Destroy</code><a href="#Destroy" class="hash-link" aria-label="Direct link to Destroy" title="Direct link to Destroy">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L907"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">Destroy</code><code>(</code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Calls <a href="#Cleanup">Janitor.Cleanup</a> and renders the Janitor unusable.</p>
+
+  
+    
+    
+      <div class="admonition admonition-warning alert alert--warning">
+        <div class="admonition-heading">
+          <h5><span class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                <path d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path>
+              </svg></span><span class="admonition-title">Metatable Removal</span></h5>
+        </div>
+        <div class="admonition-content">
+          <p>
+            Running this will make any further attempts to call a method of Janitor
+            error.
+          </p>
+        </div>
+      </div>
+    
+  
+
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LinkToInstance"><code style="text-decoration:none">LinkToInstance</code><a href="#LinkToInstance" class="hash-link" aria-label="Direct link to LinkToInstance" title="Direct link to LinkToInstance">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L971"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">LinkToInstance</code><code>(</code><div class="inset_uKQm"><div><code>object<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><code>,</code><span class="inlineDescription_G7Er">-- <span>
+<p>The instance you want to link the Janitor to.</p>
+</span></span></div><div><code>allowMultiple?<!-- -->: </code><code class="blue_P4bS">boolean</code><span class="inlineDescription_G7Er">-- <span>
+<p>Whether or not to allow multiple links on the same Janitor.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptConnection" target="_blank" rel="noopener noreferrer">RBXScriptConnection<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>A RBXScriptConnection that can be disconnected to prevent the cleanup of LinkToInstance.</p>
+</span></span></div><div>
+<p>
+  "Links" this Janitor to an Instance, such that the Janitor will <code>Cleanup</code>
+  when the Instance is <code>Destroy()</code>d and garbage collected. A Janitor may only
+  be linked to one instance at a time, unless <code>allowMultiple</code> is true. When
+  called with a truthy <code>allowMultiple</code> parameter, the Janitor will "link" the
+  Instance without overwriting any previous links, and will also not be
+  overwritable. When called with a falsy <code>allowMultiple</code> parameter, the
+  Janitor will overwrite the previous link which was also called with a falsy
+  <code>allowMultiple</code> parameter, if applicable.
+</p>
+<h3>Luau:</h3>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> obliterator <span class="token operator">=</span> Janitor<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+obliterator<span class="token punctuation">:</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Cleaning up!"</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">)</span>
+
+<span class="token keyword">do</span>
+	<span class="token keyword">local</span> folder <span class="token operator">=</span> Instance<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"Folder"</span><span class="token punctuation">)</span>
+	obliterator<span class="token punctuation">:</span><span class="token function">LinkToInstance</span><span class="token punctuation">(</span>folder<span class="token punctuation">)</span>
+	folder<span class="token punctuation">:</span><span class="token function">Destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<h3>TypeScript:</h3>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> <span class="token maybe-class-name">Janitor</span> <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"@rbxts/janitor"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obliterator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Janitor</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Add</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Cleaning up!"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">{</span>
+	<span class="token keyword">const</span> folder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">Instance</span></span><span class="token punctuation">(</span><span class="token string">"Folder"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	obliterator<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">LinkToInstance</span></span><span class="token punctuation">(</span>folder<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	folder<span class="token punctuation">.</span><span class="token method function property-access"><span class="token maybe-class-name">Destroy</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="LinkToInstances"><code style="text-decoration:none">LinkToInstances</code><a href="#LinkToInstances" class="hash-link" aria-label="Direct link to LinkToInstances" title="Direct link to LinkToInstances">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/Breezy1214/EZInput/blob/main/src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau#L981"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Janitor<!-- -->:</code><code class="green_DgR4">LinkToInstances</code><code>(</code><div class="inset_uKQm"><div><code>...<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/Instance" target="_blank" rel="noopener noreferrer">Instance<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code><span class="inlineDescription_G7Er">-- <span>
+<p>All the Instances you want linked.</p>
+</span></span></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/EZInput/api/Janitor">Janitor</a></code><span class="inlineDescription_G7Er">-- <span>
+<p>A new Janitor that can be used to manually disconnect all LinkToInstances.</p>
+</span></span></div><div>
+<p>Links several instances to a new Janitor, which is then returned.</p>
+</div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
+    &quot;functions&quot;: [
+        {
+            &quot;name&quot;: &quot;new&quot;,
+            &quot;desc&quot;: &quot;Instantiates a new Janitor object.&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 162,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Is&quot;,
+            &quot;desc&quot;: &quot;Determines if the passed object is a Janitor. This checks the metatable\ndirectly.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;object&quot;,
+                    &quot;desc&quot;: &quot;The object you are checking.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;`true` if `object` is a Janitor.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 175,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;instanceof&quot;,
+            &quot;desc&quot;: &quot;An alias for [Janitor.Is]. This is intended for roblox-ts support.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;object&quot;,
+                    &quot;desc&quot;: &quot;The object you are checking.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;`true` if `object` is a Janitor.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;static&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 188,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Add&quot;,
+            &quot;desc&quot;: &quot;Adds an `object` to Janitor for later cleanup, where `methodName` is the\nkey of the method within `object` which should be called at cleanup time.\nIf the `methodName` is `true` the `object` itself will be called if it&#x27;s a\nfunction or have `task.cancel` called on it if it is a thread. If passed an\nindex it will occupy a namespace which can be `Remove()`d or overwritten.\nReturns the `object`.\n\n:::info Note\nObjects not given an explicit `methodName` will be passed into the `typeof`\nfunction for a very naive typecheck. RBXConnections will be assigned to\n\&quot;Disconnect\&quot;, functions and threads will be assigned to `true`, and\neverything else will default to \&quot;Destroy\&quot;. Not recommended, but hey, you do\nyou.\n:::\n\n### Luau:\n\n```lua\nlocal Workspace = game:GetService(\&quot;Workspace\&quot;)\nlocal TweenService = game:GetService(\&quot;TweenService\&quot;)\n\nlocal obliterator = Janitor.new()\nlocal part = Workspace:FindFirstChild(\&quot;Part\&quot;) :: Part\n\n-- Queue the Part to be Destroyed at Cleanup time\nobliterator:Add(part, \&quot;Destroy\&quot;)\n\n-- Queue function to be called with `true` methodName\nobliterator:Add(print, true)\n\n-- Close a thread.\nobliterator:Add(task.defer(function()\n\twhile true do\n\t\tprint(\&quot;Running!\&quot;)\n\t\ttask.wait(0.5)\n\tend\nend), true)\n\n-- This implementation allows you to specify behavior for any object\nobliterator:Add(TweenService:Create(part, TweenInfo.new(1), {Size = Vector3.one}), \&quot;Cancel\&quot;)\n\n-- By passing an index, the object will occupy a namespace\n-- If \&quot;CurrentTween\&quot; already exists, it will call :Remove(\&quot;CurrentTween\&quot;) before writing\nobliterator:Add(TweenService:Create(part, TweenInfo.new(1), {Size = Vector3.one}), \&quot;Destroy\&quot;, \&quot;CurrentTween\&quot;)\n```\n\n### TypeScript:\n\n```ts\nimport { Workspace, TweenService } from \&quot;@rbxts/services\&quot;;\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor&lt;{ CurrentTween: Tween }&gt;();\nconst part = Workspace.FindFirstChild(\&quot;Part\&quot;) as Part;\n\n// Queue the part to be Destroyed at Cleanup time\nobliterator.Add(part, \&quot;Destroy\&quot;);\n\n// Queue function to be called with `true` methodName\nobliterator.Add(print, true);\n\n// Close a thread.\nobliterator.Add(task.defer(() =&gt; {\n\twhile (true) {\n\t\tprint(\&quot;Running!\&quot;);\n\t\ttask.wait(0.5);\n\t}\n}), true);\n\n// This implementation allows you to specify behavior for any object\nobliterator.Add(TweenService.Create(part, new TweenInfo(1), { Size: Vector3.one }), \&quot;Cancel\&quot;);\n\n// By passing an index, the object will occupy a namespace\n// If \&quot;CurrentTween\&quot; already exists, it will call :Remove(\&quot;CurrentTween\&quot;) before writing\nobliterator.Add(TweenService.Create(part, new TweenInfo(1), { Size: Vector3.one }), \&quot;Destroy\&quot;, \&quot;CurrentTween\&quot;);\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;object&quot;,
+                    &quot;desc&quot;: &quot;The object you want to clean up.&quot;,
+                    &quot;lua_type&quot;: &quot;T&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;methodName?&quot;,
+                    &quot;desc&quot;: &quot;The name of the method that will be used to clean up. If not passed, it will first check if the object&#x27;s type exists in TypeDefaults, and if that doesn&#x27;t exist, it assumes `Destroy`.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean | string&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;index?&quot;,
+                    &quot;desc&quot;: &quot;The index that can be used to clean up the object manually.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;The object that was passed as the first argument.&quot;,
+                    &quot;lua_type&quot;: &quot;T&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 385,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;AddObject&quot;,
+            &quot;desc&quot;: &quot;Constructs an object for you and adds it to the Janitor. It&#x27;s really just\nshorthand for `Janitor:Add(object.new(), methodName, index)`.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nlocal subObliterator = obliterator:AddObject(Janitor, \&quot;Destroy\&quot;)\n-- subObliterator is another Janitor!\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor();\nconst subObliterator = obliterator.AddObject(Janitor, \&quot;Destroy\&quot;);\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;constructor&quot;,
+                    &quot;desc&quot;: &quot;The constructor for the object you want to add to the Janitor.&quot;,
+                    &quot;lua_type&quot;: &quot;{new: (A...) -&gt; T}&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;methodName?&quot;,
+                    &quot;desc&quot;: &quot;The name of the method that will be used to clean up. If not passed, it will first check if the object&#x27;s type exists in TypeDefaults, and if that doesn&#x27;t exist, it assumes `Destroy`.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean | string&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;index?&quot;,
+                    &quot;desc&quot;: &quot;The index that can be used to clean up the object manually.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;...&quot;,
+                    &quot;desc&quot;: &quot;The arguments that will be passed to the constructor.&quot;,
+                    &quot;lua_type&quot;: &quot;A...&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;The object that was passed as the first argument.&quot;,
+                    &quot;lua_type&quot;: &quot;T&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;since&quot;: &quot;v1.16.0&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 415,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Get&quot;,
+            &quot;desc&quot;: &quot;Gets whatever object is stored with the given index, if it exists. This was\nadded since Maid allows getting the task using `__index`.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(Workspace.Baseplate, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;)\nprint(obliterator:Get(\&quot;Baseplate\&quot;)) -- Returns Baseplate.\n```\n\n### TypeScript:\n\n```ts\nimport { Workspace } from \&quot;@rbxts/services\&quot;;\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor&lt;{ Baseplate: Part }&gt;();\nobliterator.Add(Workspace.FindFirstChild(\&quot;Baseplate\&quot;) as Part, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;);\nprint(obliterator.Get(\&quot;Baseplate\&quot;)); // Returns Baseplate.\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;index&quot;,
+                    &quot;desc&quot;: &quot;The index that the object is stored under.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;This will return the object if it is found, but it won&#x27;t return anything if it doesn&#x27;t exist.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown?&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 453,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;AddPromise&quot;,
+            &quot;desc&quot;: &quot;Adds a [Promise](https://github.com/evaera/roblox-lua-promise) to the\nJanitor. If the Janitor is cleaned up and the Promise is not completed, the\nPromise will be cancelled.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:AddPromise(Promise.delay(3)):andThenCall(print, \&quot;Finished!\&quot;):catch(warn)\ntask.wait(1)\nobliterator:Cleanup()\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor();\nobliterator.AddPromise(Promise.delay(3)).andThenCall(print, \&quot;Finished!\&quot;).catch(warn);\ntask.wait(1);\nobliterator.Cleanup();\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;promiseObject&quot;,
+                    &quot;desc&quot;: &quot;The promise you want to add to the Janitor.&quot;,
+                    &quot;lua_type&quot;: &quot;Promise&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;index?&quot;,
+                    &quot;desc&quot;: &quot;The index that can be used to clean up the object manually.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Promise&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;NotAPromiseError&quot;,
+                    &quot;desc&quot;: &quot;Thrown if the promise is not a Promise.&quot;
+                }
+            ],
+            &quot;source&quot;: {
+                &quot;line&quot;: 486,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Remove&quot;,
+            &quot;desc&quot;: &quot;Cleans up whatever `Object` was set to this namespace by the 3rd parameter of [Janitor.Add](#Add).\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(workspace.Baseplate, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;)\nobliterator:Remove(\&quot;Baseplate\&quot;)\n```\n\n### TypeScript:\n\n```ts\nimport { Workspace } from \&quot;@rbxts/services\&quot;;\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor&lt;{ Baseplate: Part }&gt;();\nobliterator.Add(Workspace.FindFirstChild(\&quot;Baseplate\&quot;) as Part, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;);\nobliterator.Remove(\&quot;Baseplate\&quot;);\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;index&quot;,
+                    &quot;desc&quot;: &quot;The index you want to remove.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 551,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;RemoveNoClean&quot;,
+            &quot;desc&quot;: &quot;Removes an object from the Janitor without running a cleanup.\n\n### Luau\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(function()\n\tprint(\&quot;Removed!\&quot;)\nend, true, \&quot;Function\&quot;)\n\nobliterator:RemoveNoClean(\&quot;Function\&quot;) -- Does not print.\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor&lt;{ Function: () =&gt; void }&gt;();\nobliterator.Add(() =&gt; print(\&quot;Removed!\&quot;), true, \&quot;Function\&quot;);\n\nobliterator.RemoveNoClean(\&quot;Function\&quot;); // Does not print.\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;index&quot;,
+                    &quot;desc&quot;: &quot;The index you are removing.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;since&quot;: &quot;v1.15.0&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 585,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;RemoveList&quot;,
+            &quot;desc&quot;: &quot;Cleans up multiple objects at once.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(function()\n\tprint(\&quot;Removed One\&quot;)\nend, true, \&quot;One\&quot;)\n\nobliterator:Add(function()\n\tprint(\&quot;Removed Two\&quot;)\nend, true, \&quot;Two\&quot;)\n\nobliterator:Add(function()\n\tprint(\&quot;Removed Three\&quot;)\nend, true, \&quot;Three\&quot;)\n\nobliterator:RemoveList(\&quot;One\&quot;, \&quot;Two\&quot;, \&quot;Three\&quot;) -- Prints \&quot;Removed One\&quot;, \&quot;Removed Two\&quot;, and \&quot;Removed Three\&quot;\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\ntype NoOp = () =&gt; void\n\nconst obliterator = new Janitor&lt;{ One: NoOp, Two: NoOp, Three: NoOp }&gt;();\nobliterator.Add(() =&gt; print(\&quot;Removed One\&quot;), true, \&quot;One\&quot;);\nobliterator.Add(() =&gt; print(\&quot;Removed Two\&quot;), true, \&quot;Two\&quot;);\nobliterator.Add(() =&gt; print(\&quot;Removed Three\&quot;), true, \&quot;Three\&quot;);\n\nobliterator.RemoveList(\&quot;One\&quot;, \&quot;Two\&quot;, \&quot;Three\&quot;); // Prints \&quot;Removed One\&quot;, \&quot;Removed Two\&quot;, and \&quot;Removed Three\&quot;\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;...&quot;,
+                    &quot;desc&quot;: &quot;The indices you want to remove.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;since&quot;: &quot;v1.14.0&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 640,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;RemoveListNoClean&quot;,
+            &quot;desc&quot;: &quot;Cleans up multiple objects at once without running their cleanup.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(function()\n\tprint(\&quot;Removed One\&quot;)\nend, true, \&quot;One\&quot;)\n\nobliterator:Add(function()\n\tprint(\&quot;Removed Two\&quot;)\nend, true, \&quot;Two\&quot;)\n\nobliterator:Add(function()\n\tprint(\&quot;Removed Three\&quot;)\nend, true, \&quot;Three\&quot;)\n\nobliterator:RemoveListNoClean(\&quot;One\&quot;, \&quot;Two\&quot;, \&quot;Three\&quot;) -- Nothing is printed.\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\ntype NoOperation = () =&gt; void\n\nconst obliterator = new Janitor&lt;{ One: NoOperation, Two: NoOperation, Three: NoOperation }&gt;();\nobliterator.Add(() =&gt; print(\&quot;Removed One\&quot;), true, \&quot;One\&quot;);\nobliterator.Add(() =&gt; print(\&quot;Removed Two\&quot;), true, \&quot;Two\&quot;);\nobliterator.Add(() =&gt; print(\&quot;Removed Three\&quot;), true, \&quot;Three\&quot;);\n\nobliterator.RemoveListNoClean(\&quot;One\&quot;, \&quot;Two\&quot;, \&quot;Three\&quot;); // Nothing is printed.\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;...&quot;,
+                    &quot;desc&quot;: &quot;The indices you want to remove.&quot;,
+                    &quot;lua_type&quot;: &quot;unknown&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;since&quot;: &quot;v1.15.0&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 711,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;GetAll&quot;,
+            &quot;desc&quot;: &quot;Returns a frozen copy of the Janitor&#x27;s indices.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\nobliterator:Add(Workspace.Baseplate, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;)\nprint(obliterator:GetAll().Baseplate) -- Prints Baseplate.\n```\n\n### TypeScript:\n\n```ts\nimport { Workspace } from \&quot;@rbxts/services\&quot;;\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor&lt;{ Baseplate: Part }&gt;();\nobliterator.Add(Workspace.FindFirstChild(\&quot;Baseplate\&quot;) as Part, \&quot;Destroy\&quot;, \&quot;Baseplate\&quot;);\nprint(obliterator.GetAll().Baseplate); // Prints Baseplate.\n```&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;{[any]: any}&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;since&quot;: &quot;v1.15.1&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 796,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Cleanup&quot;,
+            &quot;desc&quot;: &quot;Calls each object&#x27;s `methodName` (or calls the object if\n`methodName == true`) and removes them from the Janitor. Also clears the\nnamespace. This function is also called when you call a Janitor object (so\nit can be used as a destructor callback).\n\n### Luau:\n\n```lua\nobliterator:Cleanup() -- Valid.\nobliterator() -- Also valid.\n```\n\n### TypeScript:\n\n```ts\nobliterator.Cleanup()\n// TypeScript version doesn&#x27;t support the __call method of cleaning.\n```&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 824,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;Destroy&quot;,
+            &quot;desc&quot;: &quot;Calls [Janitor.Cleanup](#Cleanup) and renders the Janitor unusable.\n\n:::warning Metatable Removal\nRunning this will make any further attempts to call a method of Janitor\nerror.\n:::&quot;,
+            &quot;params&quot;: [],
+            &quot;returns&quot;: [],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 907,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;LinkToInstance&quot;,
+            &quot;desc&quot;: &quot;\&quot;Links\&quot; this Janitor to an Instance, such that the Janitor will `Cleanup`\nwhen the Instance is `Destroy()`d and garbage collected. A Janitor may only\nbe linked to one instance at a time, unless `allowMultiple` is true. When\ncalled with a truthy `allowMultiple` parameter, the Janitor will \&quot;link\&quot; the\nInstance without overwriting any previous links, and will also not be\noverwritable. When called with a falsy `allowMultiple` parameter, the\nJanitor will overwrite the previous link which was also called with a falsy\n`allowMultiple` parameter, if applicable.\n\n### Luau:\n\n```lua\nlocal obliterator = Janitor.new()\n\nobliterator:Add(function()\n\tprint(\&quot;Cleaning up!\&quot;)\nend, true)\n\ndo\n\tlocal folder = Instance.new(\&quot;Folder\&quot;)\n\tobliterator:LinkToInstance(folder)\n\tfolder:Destroy()\nend\n```\n\n### TypeScript:\n\n```ts\nimport { Janitor } from \&quot;@rbxts/janitor\&quot;;\n\nconst obliterator = new Janitor();\nobliterator.Add(() =&gt; print(\&quot;Cleaning up!\&quot;), true);\n\n{\n\tconst folder = new Instance(\&quot;Folder\&quot;);\n\tobliterator.LinkToInstance(folder, false);\n\tfolder.Destroy();\n}\n```&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;object&quot;,
+                    &quot;desc&quot;: &quot;The instance you want to link the Janitor to.&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;allowMultiple?&quot;,
+                    &quot;desc&quot;: &quot;Whether or not to allow multiple links on the same Janitor.&quot;,
+                    &quot;lua_type&quot;: &quot;boolean&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;A RBXScriptConnection that can be disconnected to prevent the cleanup of LinkToInstance.&quot;,
+                    &quot;lua_type&quot;: &quot;RBXScriptConnection&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 971,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;LinkToInstances&quot;,
+            &quot;desc&quot;: &quot;Links several instances to a new Janitor, which is then returned.&quot;,
+            &quot;params&quot;: [
+                {
+                    &quot;name&quot;: &quot;...&quot;,
+                    &quot;desc&quot;: &quot;All the Instances you want linked.&quot;,
+                    &quot;lua_type&quot;: &quot;Instance&quot;
+                }
+            ],
+            &quot;returns&quot;: [
+                {
+                    &quot;desc&quot;: &quot;A new Janitor that can be used to manually disconnect all LinkToInstances.&quot;,
+                    &quot;lua_type&quot;: &quot;Janitor&quot;
+                }
+            ],
+            &quot;function_type&quot;: &quot;method&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 981,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        }
+    ],
+    &quot;properties&quot;: [
+        {
+            &quot;name&quot;: &quot;CurrentlyCleaning&quot;,
+            &quot;desc&quot;: &quot;Whether or not the Janitor is currently cleaning up.&quot;,
+            &quot;lua_type&quot;: &quot;boolean&quot;,
+            &quot;readonly&quot;: true,
+            &quot;source&quot;: {
+                &quot;line&quot;: 134,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;SuppressInstanceReDestroy&quot;,
+            &quot;desc&quot;: &quot;Whether or not you want to suppress the re-destroying of instances. Default\nis false, which is the original behavior.&quot;,
+            &quot;lua_type&quot;: &quot;boolean&quot;,
+            &quot;since&quot;: &quot;1.15.4&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 142,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        },
+        {
+            &quot;name&quot;: &quot;UnsafeThreadCleanup&quot;,
+            &quot;desc&quot;: &quot;Whether or not to use the unsafe fast defer function for cleaning up\nthreads. This might be able to throw, so be careful. If you&#x27;re getting any\nthread related errors, chances are it is this.&quot;,
+            &quot;lua_type&quot;: &quot;boolean&quot;,
+            &quot;since&quot;: &quot;1.18.0&quot;,
+            &quot;source&quot;: {
+                &quot;line&quot;: 151,
+                &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+            }
+        }
+    ],
+    &quot;types&quot;: [],
+    &quot;name&quot;: &quot;Janitor&quot;,
+    &quot;desc&quot;: &quot;Janitor is a light-weight, flexible object for cleaning up connections,\ninstances, or anything. This implementation covers all use cases, as it\ndoesn&#x27;t force you to rely on naive typechecking to guess how an instance\nshould be cleaned up. Instead, the developer may specify any behavior for\nany object.\n\nThis is the fastest OOP library on Roblox of its kind on both X86-64 as\nwell as ARM64.&quot;,
+    &quot;source&quot;: {
+        &quot;line&quot;: 118,
+        &quot;path&quot;: &quot;src/Packages/_Index/howmanysmall_janitor@1.18.3/janitor/src/init.luau&quot;
+    }
+}</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#CurrentlyCleaning" class="table-of-contents__link toc-highlight">CurrentlyCleaning</a></li><li><a href="#SuppressInstanceReDestroy" class="table-of-contents__link toc-highlight">SuppressInstanceReDestroy</a></li><li><a href="#UnsafeThreadCleanup" class="table-of-contents__link toc-highlight">UnsafeThreadCleanup</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Add" class="table-of-contents__link toc-highlight">:Add</a></li><li><a href="#AddObject" class="table-of-contents__link toc-highlight">:AddObject</a></li><li><a href="#AddPromise" class="table-of-contents__link toc-highlight">:AddPromise</a></li><li><a href="#Cleanup" class="table-of-contents__link toc-highlight">:Cleanup</a></li><li><a href="#Destroy" class="table-of-contents__link toc-highlight">:Destroy</a></li><li><a href="#Get" class="table-of-contents__link toc-highlight">:Get</a></li><li><a href="#GetAll" class="table-of-contents__link toc-highlight">:GetAll</a></li><li><a href="#LinkToInstance" class="table-of-contents__link toc-highlight">:LinkToInstance</a></li><li><a href="#LinkToInstances" class="table-of-contents__link toc-highlight">:LinkToInstances</a></li><li><a href="#Remove" class="table-of-contents__link toc-highlight">:Remove</a></li><li><a href="#RemoveList" class="table-of-contents__link toc-highlight">:RemoveList</a></li><li><a href="#RemoveListNoClean" class="table-of-contents__link toc-highlight">:RemoveListNoClean</a></li><li><a href="#RemoveNoClean" class="table-of-contents__link toc-highlight">:RemoveNoClean</a></li><li><a href="#instanceof" class="table-of-contents__link toc-highlight">.instanceof</a></li><li><a href="#Is" class="table-of-contents__link toc-highlight">.Is</a></li><li><a href="#new" class="table-of-contents__link toc-highlight">.new</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Breezy1214. Built with Moonwave and Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
