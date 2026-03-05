@@ -1,4 +1,5 @@
 .planning/
 wally.lock
 sourcemap.json
-Packages/
+src/Packages/
+test.project.json

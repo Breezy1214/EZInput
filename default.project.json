@@ -1,9 +1,9 @@
 {
-  "name": "EZInput",
-  "tree": {
-    "$path": "src",
-    "Packages": {
-      "$path": "Packages"
-    }
-  }
+	"name": "Packages",
+	"tree": {
+		"$path": "src/Packages",
+		"EZInput": {
+			"$path": "src"
+		}
+	}
 }
