@@ -1,6 +1,6 @@
 [package]
 name = "breezy1214/ezinput"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fluent chainable builder API for Roblox Input Action System"
 license = "MIT"
 registry = "https://github.com/UpliftGames/wally-index"

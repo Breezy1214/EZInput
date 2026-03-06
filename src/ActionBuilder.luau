@@ -1,5 +1,5 @@
 --!strict
-local Janitor = require(script.Parent.Packages.Janitor)
+local Janitor = require(script.Parent.Parent.Janitor)
 local IASAdapter = require(script.Parent.IASAdapter)
 local BindingBuilder = require(script.Parent.BindingBuilder)
 
