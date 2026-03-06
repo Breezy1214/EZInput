@@ -1,0 +1,15 @@
+{
+	"name": "EZInput",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"Packages": {
+				"$className": "Folder",
+				"EZInput": {
+					"$path": "src"
+				}
+			}
+		}
+	}
+}

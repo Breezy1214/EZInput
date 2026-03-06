@@ -2,5 +2,4 @@
 wally.lock
 sourcemap.json
 src/Packages/
-test.project.json
 build/
