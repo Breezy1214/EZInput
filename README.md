@@ -20,7 +20,7 @@ Add to your `wally.toml`:
 
 ```toml
 [dependencies]
-EZInput = "breezy1214/ezinput@0.1.0"
+EZInput = "breezy1214/ezinput@0.1.1"
 ```
 
 ## Quick Start
