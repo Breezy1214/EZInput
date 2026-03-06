@@ -25,6 +25,7 @@ export type ActionBuilder = {
 export type BindingBuilder = {
 	withModifier: (self: BindingBuilder, modifier: Enum.KeyCode) -> BindingBuilder,
 	withSecondaryModifier: (self: BindingBuilder, modifier: Enum.KeyCode) -> BindingBuilder,
+	bind: (self: BindingBuilder, keyCode: Enum.KeyCode) -> BindingBuilder,
 	action: (self: BindingBuilder) -> ActionBuilder,
 	context: (self: BindingBuilder) -> ContextBuilder,
 	getRawInstance: (self: BindingBuilder) -> InputBinding,

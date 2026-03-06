@@ -61,6 +61,13 @@ function BindingBuilder.withSecondaryModifier(self: BindingBuilderImpl, modifier
 	return self
 end
 
+--- Creates a sibling binding on the same action (delegates to parent ActionBuilder).
+--- @param keyCode Enum.KeyCode
+--- @return BindingBuilder
+function BindingBuilder.bind(self: BindingBuilderImpl, keyCode: Enum.KeyCode): any
+	return self._actionBuilder:bind(keyCode)
+end
+
 --- Returns this binding's owning action builder.
 --- @return ActionBuilder
 function BindingBuilder.action(self: BindingBuilderImpl): any
